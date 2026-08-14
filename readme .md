@@ -21,11 +21,19 @@ Ich möchte bei diesem Projekt vor allem besser darin werden, meine Arbeit zu pl
 
 ## 14.8
 
-- [ ] Als Benutzer möchte ich ein neues Training erstellen und Übungen hinzufügen können, damit ich mein Training planen kann.
+- [x] Als Benutzer möchte ich ein neues Training erstellen und Übungen hinzufügen können, damit ich mein Training planen kann.
 - [ ] Als Benutzer möchte ich bei einer Übung Gewicht, Sätze und Wiederholungen eintragen können, damit ich weiss, wie viel ich trainiert habe.
 
 - [ ] Als Benutzer möchte ich meine Trainingsdaten auf meinem Gerät speichern können, damit sie nach dem Schliessen der App noch vorhanden sind.
 
-✍️ Heute habe ich... (50-100 Wörter)
+Heute habe ich mein Projekt für die Lernperiode gestartet. Ich habe mich entschieden, eine Gym-App mit Avalonia und C# zu machen. Zuerst habe ich Avalonia installiert und ein neues Projekt erstellt. Danach habe ich mit dem ersten Arbeitspaket angefangen. Dabei habe ich die Oberfläche für ein neues Training erstellt und angefangen, die Funktionen für Trainingsname und Übungen zu programmieren. Es gab einige Fehler im Code, die ich Schritt für Schritt verbessert habe. Dabei habe ich auch besser verstanden, wie XAML und C# zusammenarbeiten. Zeitlich habe ich nur ein Arbeitspaket geschafft, da dass installieren von Avalonia sehr lange gedauert hat.
 
-☝️ Vergessen Sie nicht, einen ersten Code und Skizze auf github hochzuladen!
+## 21.8
+
+- [ ] Als Benutzer möchte ich bei einer Übung Gewicht, Sätze und Wiederholungen eintragen können, damit ich weiss, wie viel ich trainiert habe.
+
+- [ ] Als Benutzer möchte ich meine Trainingsdaten auf meinem Gerät speichern können, damit sie nach dem Schliessen der App noch vorhanden sind.
+
+- [ ] Als Benutzer möchte ich meine gespeicherten Trainings in einer Übersicht sehen können, damit ich meine vergangenen Trainingseinheiten anschauen kann.
+
+- [ ]  Als Benutzer möchte ich ein gespeichertes Training bearbeiten oder löschen können, damit ich falsche Einträge korrigieren oder nicht mehr benötigte Trainings entfernen kann.
