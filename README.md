@@ -30,7 +30,7 @@ Heute habe ich mein Projekt für die Lernperiode gestartet. Ich habe mich entsch
 
 ## 21.8
 
-- [ ] Als Benutzer möchte ich bei einer Übung Gewicht, Sätze und Wiederholungen eintragen können, damit ich weiss, wie viel ich trainiert habe.
+- [x] Als Benutzer möchte ich bei einer Übung Gewicht, Sätze und Wiederholungen eintragen können, damit ich weiss, wie viel ich trainiert habe.
 
 - [ ] Als Benutzer möchte ich meine Trainingsdaten auf meinem Gerät speichern können, damit sie nach dem Schliessen der App noch vorhanden sind.
 
