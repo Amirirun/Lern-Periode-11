@@ -38,4 +38,12 @@ Heute habe ich mein Projekt für die Lernperiode gestartet. Ich habe mich entsch
 
 - [x] Als Benutzer möchte ich meine gespeicherten Trainings in einer Übersicht sehen können, damit ich meine vergangenen Trainingseinheiten anschauen kann.
 
+Heute habe ich an meiner Gym App weitergearbeitet. Ich habe die Möglichkeit eingebaut, bei einer Übung das Gewicht, die Anzahl Sätze und die Wiederholungen einzutragen. Danach habe ich mich mit dem Speichern der Trainings beschäftigt und dafür eine JSON Datei verwendet. So bleiben die Trainings auch nach dem Schliessen der App gespeichert. Zusätzlich habe ich eine Übersicht erstellt, in der man seine bereits gespeicherten Trainings und die dazugehörigen Übungen wieder anschauen kann.
+
+
+## 28.8
 - [ ]  Als Benutzer möchte ich ein gespeichertes Training bearbeiten oder löschen können, damit ich falsche Einträge korrigieren oder nicht mehr benötigte Trainings entfernen kann.
+
+- [ ]  Als Benutzer möchte ich ein gespeichertes Training auswählen und die enthaltenen Übungen genauer anschauen können, damit ich meine alten Trainings besser überprüfen kann.
+
+- [ ]  Als Benutzer möchte ich sehen können, wie oft ich eine bestimmte Übung gemacht habe und welches Gewicht ich dabei verwendet habe, damit ich meinen Trainingsfortschritt verfolgen kann.
