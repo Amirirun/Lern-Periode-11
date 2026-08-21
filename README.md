@@ -32,8 +32,10 @@ Heute habe ich mein Projekt für die Lernperiode gestartet. Ich habe mich entsch
 
 - [x] Als Benutzer möchte ich bei einer Übung Gewicht, Sätze und Wiederholungen eintragen können, damit ich weiss, wie viel ich trainiert habe.
 
-- [ ] Als Benutzer möchte ich meine Trainingsdaten auf meinem Gerät speichern können, damit sie nach dem Schliessen der App noch vorhanden sind.
+- [x] Als Benutzer möchte ich meine Trainingsdaten auf meinem Gerät speichern können, damit sie nach dem Schliessen der App noch vorhanden sind.
 
-- [ ] Als Benutzer möchte ich meine gespeicherten Trainings in einer Übersicht sehen können, damit ich meine vergangenen Trainingseinheiten anschauen kann.
+- [x] Als Benutzer möchte ich meine Trainingsdaten in einer Json Datei speichern.
+
+- [x] Als Benutzer möchte ich meine gespeicherten Trainings in einer Übersicht sehen können, damit ich meine vergangenen Trainingseinheiten anschauen kann.
 
 - [ ]  Als Benutzer möchte ich ein gespeichertes Training bearbeiten oder löschen können, damit ich falsche Einträge korrigieren oder nicht mehr benötigte Trainings entfernen kann.
