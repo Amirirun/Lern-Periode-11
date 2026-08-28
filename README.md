@@ -57,4 +57,4 @@ Heute habe ich meine Gym-App weiterentwickelt. Ich habe eingebaut, dass gespeich
       
 - [ ] Als Benutzer möchte ich meine gespeicherten Trainings nach Datum sortiert sehen können, damit ich schnell meine letzten Trainingseinheiten finde.
       
-- [ ]Als Benutzer möchte ich nach einer bestimmten Übung suchen können, damit ich schneller sehen kann, in welchen Trainings ich diese Übung gemacht habe.
+- [ ] Als Benutzer möchte ich nach einer bestimmten Übung suchen können, damit ich schneller sehen kann, in welchen Trainings ich diese Übung gemacht habe.
