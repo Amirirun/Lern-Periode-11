@@ -42,8 +42,19 @@ Heute habe ich an meiner Gym App weitergearbeitet. Ich habe die Möglichkeit ein
 
 
 ## 28.8
-- [ ]  Als Benutzer möchte ich ein gespeichertes Training bearbeiten oder löschen können, damit ich falsche Einträge korrigieren oder nicht mehr benötigte Trainings entfernen kann.
+- [x]  Als Benutzer möchte ich ein gespeichertes Training bearbeiten oder löschen können, damit ich falsche Einträge korrigieren oder nicht mehr benötigte Trainings entfernen kann.
 
-- [ ]  Als Benutzer möchte ich ein gespeichertes Training auswählen und die enthaltenen Übungen genauer anschauen können, damit ich meine alten Trainings besser überprüfen kann.
+- [x]  Als Benutzer möchte ich ein gespeichertes Training auswählen und die enthaltenen Übungen genauer anschauen können, damit ich meine alten Trainings besser überprüfen kann.
 
-- [ ]  Als Benutzer möchte ich sehen können, wie oft ich eine bestimmte Übung gemacht habe und welches Gewicht ich dabei verwendet habe, damit ich meinen Trainingsfortschritt verfolgen kann.
+- [x]  Als Benutzer möchte ich sehen können, wie oft ich eine bestimmte Übung gemacht habe und welches Gewicht ich dabei verwendet habe, damit ich meinen Trainingsfortschritt verfolgen kann.
+
+Heute habe ich meine Gym-App weiterentwickelt. Ich habe eingebaut, dass gespeicherte Trainings ausgewählt, bearbeitet und gelöscht werden können. Ausserdem kann man jetzt die Übungen eines vergangenen Trainings genauer anschauen. Zusätzlich habe ich eine Fortschrittsübersicht erstellt, welche zeigt, wie oft eine Übung gemacht wurde und mit welchem Gewicht sie zuletzt und maximal ausgeführt wurde. 
+
+## 04.09
+- [ ] Als Benutzer möchte ich einzelne Übungen aus einem aktuellen Training löschen können, damit ich falsch hinzugefügte Übungen entfernen kann.
+      
+- [ ] Als Benutzer möchte ich das Datum eines Trainings speichern können, damit ich sehen kann, wann ich trainiert habe.
+      
+- [ ] Als Benutzer möchte ich meine gespeicherten Trainings nach Datum sortiert sehen können, damit ich schnell meine letzten Trainingseinheiten finde.
+      
+- [ ]Als Benutzer möchte ich nach einer bestimmten Übung suchen können, damit ich schneller sehen kann, in welchen Trainings ich diese Übung gemacht habe.
