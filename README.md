@@ -58,3 +58,14 @@ Heute habe ich meine Gym-App weiterentwickelt. Ich habe eingebaut, dass gespeich
 - [x] Als Benutzer möchte ich meine gespeicherten Trainings nach Datum sortiert sehen können, damit ich schnell meine letzten Trainingseinheiten finde.
       
 - [x] Als Benutzer möchte ich nach einer bestimmten Übung suchen können, damit ich schneller sehen kann, in welchen Trainings ich diese Übung gemacht habe.
+
+Heute habe ich meine Gym-App weiterentwickelt. Ich habe eingebaut, dass bei jedem Training ein Datum gespeichert werden kann. Ausserdem werden die gespeicherten Trainings jetzt nach Datum sortiert, sodass die neuesten Trainings direkt oben angezeigt werden. Zusätzlich habe ich eine Suchfunktion erstellt, mit der man nach einer bestimmten Übung suchen kann und dann sieht, in welchen Trainings diese Übung vorkommt.
+
+11.09
+- [ ] Als Benutzer möchte ich einzelne Übungen in einem gespeicherten Training bearbeiten können, damit ich Gewicht, Sätze oder Wiederholungen nachträglich korrigieren kann.
+
+ - [ ]Als Benutzer möchte ich meine Trainings nach Namen filtern können, damit ich bestimmte Trainingseinheiten schneller finde.
+ 
+ - [ ]Als Benutzer möchte ich für jede Übung meinen bisherigen Höchstwert sehen können, damit ich meine persönliche Bestleistung erkenne.
+ 
+ - [ ]Als Benutzer möchte ich eine einfache Statistik über meine Trainings sehen können, damit ich sehe, wie viele Trainings und Übungen ich insgesamt gespeichert habe.
