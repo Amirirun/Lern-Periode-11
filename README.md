@@ -53,8 +53,8 @@ Heute habe ich meine Gym-App weiterentwickelt. Ich habe eingebaut, dass gespeich
 ## 04.09
 - [x] Als Benutzer möchte ich einzelne Übungen aus einem aktuellen Training löschen können, damit ich falsch hinzugefügte Übungen entfernen kann.
       
-- [ ] Als Benutzer möchte ich das Datum eines Trainings speichern können, damit ich sehen kann, wann ich trainiert habe.
+- [x] Als Benutzer möchte ich das Datum eines Trainings speichern können, damit ich sehen kann, wann ich trainiert habe.
       
-- [ ] Als Benutzer möchte ich meine gespeicherten Trainings nach Datum sortiert sehen können, damit ich schnell meine letzten Trainingseinheiten finde.
+- [x] Als Benutzer möchte ich meine gespeicherten Trainings nach Datum sortiert sehen können, damit ich schnell meine letzten Trainingseinheiten finde.
       
-- [ ] Als Benutzer möchte ich nach einer bestimmten Übung suchen können, damit ich schneller sehen kann, in welchen Trainings ich diese Übung gemacht habe.
+- [x] Als Benutzer möchte ich nach einer bestimmten Übung suchen können, damit ich schneller sehen kann, in welchen Trainings ich diese Übung gemacht habe.
