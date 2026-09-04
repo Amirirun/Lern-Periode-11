@@ -51,7 +51,7 @@ Heute habe ich an meiner Gym App weitergearbeitet. Ich habe die Möglichkeit ein
 Heute habe ich meine Gym-App weiterentwickelt. Ich habe eingebaut, dass gespeicherte Trainings ausgewählt, bearbeitet und gelöscht werden können. Ausserdem kann man jetzt die Übungen eines vergangenen Trainings genauer anschauen. Zusätzlich habe ich eine Fortschrittsübersicht erstellt, welche zeigt, wie oft eine Übung gemacht wurde und mit welchem Gewicht sie zuletzt und maximal ausgeführt wurde. 
 
 ## 04.09
-- [ ] Als Benutzer möchte ich einzelne Übungen aus einem aktuellen Training löschen können, damit ich falsch hinzugefügte Übungen entfernen kann.
+- [x] Als Benutzer möchte ich einzelne Übungen aus einem aktuellen Training löschen können, damit ich falsch hinzugefügte Übungen entfernen kann.
       
 - [ ] Als Benutzer möchte ich das Datum eines Trainings speichern können, damit ich sehen kann, wann ich trainiert habe.
       
