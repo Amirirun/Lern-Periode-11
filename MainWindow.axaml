@@ -14,6 +14,7 @@
             Margin="30"
             Spacing="12">
 
+
             <!-- TITEL -->
 
             <TextBlock
@@ -30,11 +31,21 @@
                 FontWeight="Bold"/>
 
 
-            <TextBlock Text="Name des Trainings"/>
+            <TextBlock
+                Text="Name des Trainings"/>
 
             <TextBox
                 Text="{Binding TrainingName}"
                 Watermark="z.B. Push Day"/>
+
+
+            <!-- DATUM -->
+
+            <TextBlock
+                Text="Datum des Trainings"/>
+
+            <DatePicker
+                SelectedDate="{Binding TrainingDate, Mode=TwoWay}"/>
 
 
             <!-- NEUE ÜBUNG -->
@@ -86,10 +97,6 @@
                 FontSize="20"
                 FontWeight="Bold"
                 Margin="0,15,0,0"/>
-
-
-            <TextBlock
-                Text="Klicke eine Übung an, wenn du sie löschen möchtest."/>
 
 
             <ListBox
@@ -144,14 +151,10 @@
             </ListBox>
 
 
-            <!-- ÜBUNG LÖSCHEN -->
-
             <Button
                 Content="Ausgewählte Übung löschen"
                 Command="{Binding DeleteExerciseCommand}"/>
 
-
-            <!-- TRAINING SPEICHERN -->
 
             <Button
                 Content="Training speichern"
@@ -165,7 +168,9 @@
                 TextWrapping="Wrap"/>
 
 
+            <!-- ================================ -->
             <!-- GESPEICHERTE TRAININGS -->
+            <!-- ================================ -->
 
             <TextBlock
                 Text="Gespeicherte Trainings"
@@ -175,24 +180,30 @@
 
 
             <TextBlock
-                Text="Wähle ein Training aus."/>
+                Text="Neueste Trainings werden zuerst angezeigt."/>
+
 
             <ListBox
                 ItemsSource="{Binding SavedTrainings}"
                 SelectedItem="{Binding SelectedTraining, Mode=TwoWay}"
-                Height="180">
+                Height="220">
 
                 <ListBox.ItemTemplate>
 
                     <DataTemplate
                         x:DataType="models:Training">
 
-                        <StackPanel Margin="5">
+                        <StackPanel
+                            Margin="5"
+                            Spacing="3">
 
                             <TextBlock
                                 Text="{Binding Name}"
                                 FontSize="18"
                                 FontWeight="Bold"/>
+
+                            <TextBlock
+                                Text="{Binding DateText}"/>
 
                             <TextBlock
                                 Text="{Binding ExerciseCount,
@@ -206,8 +217,6 @@
 
             </ListBox>
 
-
-            <!-- TRAINING BEARBEITEN / LÖSCHEN -->
 
             <StackPanel
                 Orientation="Horizontal"
@@ -224,13 +233,80 @@
             </StackPanel>
 
 
+            <!-- ================================ -->
+            <!-- SUCHE NACH ÜBUNG -->
+            <!-- ================================ -->
+
+            <TextBlock
+                Text="Training nach Übung suchen"
+                FontSize="24"
+                FontWeight="Bold"
+                Margin="0,25,0,5"/>
+
+
+            <TextBlock
+                Text="Gib den Namen einer Übung ein:"/>
+
+
+            <TextBox
+                Text="{Binding SearchExercise}"
+                Watermark="z.B. Bankdrücken"/>
+
+
+            <TextBlock
+                Text="Gefundene Trainings"
+                FontSize="18"
+                FontWeight="Bold"/>
+
+
+            <ItemsControl
+                ItemsSource="{Binding SearchResults}">
+
+                <ItemsControl.ItemTemplate>
+
+                    <DataTemplate
+                        x:DataType="models:Training">
+
+                        <Border
+                            Padding="12"
+                            Margin="0,5"
+                            BorderThickness="1"
+                            CornerRadius="8">
+
+                            <StackPanel Spacing="3">
+
+                                <TextBlock
+                                    Text="{Binding Name}"
+                                    FontSize="18"
+                                    FontWeight="Bold"/>
+
+                                <TextBlock
+                                    Text="{Binding DateText}"/>
+
+                                <TextBlock
+                                    Text="{Binding ExerciseCount,
+                                    StringFormat='Übungen: {0}'}"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                    </DataTemplate>
+
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+
+            <!-- ================================ -->
             <!-- DETAILS -->
+            <!-- ================================ -->
 
             <TextBlock
                 Text="Details des ausgewählten Trainings"
                 FontSize="22"
                 FontWeight="Bold"
-                Margin="0,20,0,5"/>
+                Margin="0,25,0,5"/>
 
 
             <ContentControl
@@ -252,6 +328,9 @@
                                     Text="{Binding Name}"
                                     FontSize="20"
                                     FontWeight="Bold"/>
+
+                                <TextBlock
+                                    Text="{Binding DateText}"/>
 
 
                                 <ItemsControl
@@ -312,7 +391,9 @@
             </ContentControl>
 
 
-            <!-- TRAININGSFORTSCHRITT -->
+            <!-- ================================ -->
+            <!-- FORTSCHRITT -->
+            <!-- ================================ -->
 
             <TextBlock
                 Text="Trainingsfortschritt"
@@ -363,6 +444,7 @@
                 </ItemsControl.ItemTemplate>
 
             </ItemsControl>
+
 
         </StackPanel>
 

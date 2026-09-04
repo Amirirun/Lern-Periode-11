@@ -18,6 +18,12 @@ public class MainWindowViewModel : ViewModelBase
     private string newRepetitions = "";
     private string statusMessage = "";
 
+    // Suchfeld
+    private string searchExercise = "";
+
+    // Datum des Trainings
+    private DateTimeOffset? trainingDate = DateTimeOffset.Now;
+
     private Training? selectedTraining;
     private Exercise? selectedExercise;
 
@@ -26,11 +32,23 @@ public class MainWindowViewModel : ViewModelBase
     private readonly string filePath;
 
 
+    // ------------------------------------------------
+    // EINGABEFELDER
+    // ------------------------------------------------
+
     public string TrainingName
     {
         get => trainingName;
         set => SetProperty(ref trainingName, value);
     }
+
+
+    public DateTimeOffset? TrainingDate
+    {
+        get => trainingDate;
+        set => SetProperty(ref trainingDate, value);
+    }
+
 
     public string NewExercise
     {
@@ -38,11 +56,13 @@ public class MainWindowViewModel : ViewModelBase
         set => SetProperty(ref newExercise, value);
     }
 
+
     public string NewWeight
     {
         get => newWeight;
         set => SetProperty(ref newWeight, value);
     }
+
 
     public string NewSets
     {
@@ -50,11 +70,13 @@ public class MainWindowViewModel : ViewModelBase
         set => SetProperty(ref newSets, value);
     }
 
+
     public string NewRepetitions
     {
         get => newRepetitions;
         set => SetProperty(ref newRepetitions, value);
     }
+
 
     public string StatusMessage
     {
@@ -62,6 +84,29 @@ public class MainWindowViewModel : ViewModelBase
         set => SetProperty(ref statusMessage, value);
     }
 
+
+    // ------------------------------------------------
+    // SUCHE
+    // ------------------------------------------------
+
+    public string SearchExercise
+    {
+        get => searchExercise;
+
+        set
+        {
+            SetProperty(ref searchExercise, value);
+
+            // Bei jeder Änderung im Suchfeld
+            // werden die Ergebnisse aktualisiert
+            UpdateSearchResults();
+        }
+    }
+
+
+    // ------------------------------------------------
+    // AUSWAHL
+    // ------------------------------------------------
 
     public Training? SelectedTraining
     {
@@ -77,12 +122,23 @@ public class MainWindowViewModel : ViewModelBase
     }
 
 
+    // ------------------------------------------------
+    // LISTEN
+    // ------------------------------------------------
+
     public ObservableCollection<Exercise> Exercises { get; } = new();
 
     public ObservableCollection<Training> SavedTrainings { get; } = new();
 
     public ObservableCollection<ExerciseProgress> ExerciseProgresses { get; } = new();
 
+    // Trainings, die zur gesuchten Übung passen
+    public ObservableCollection<Training> SearchResults { get; } = new();
+
+
+    // ------------------------------------------------
+    // COMMANDS
+    // ------------------------------------------------
 
     public IRelayCommand AddExerciseCommand { get; }
 
@@ -94,6 +150,10 @@ public class MainWindowViewModel : ViewModelBase
 
     public IRelayCommand DeleteTrainingCommand { get; }
 
+
+    // ------------------------------------------------
+    // KONSTRUKTOR
+    // ------------------------------------------------
 
     public MainWindowViewModel()
     {
@@ -127,39 +187,64 @@ public class MainWindowViewModel : ViewModelBase
 
         LoadTrainings();
 
+        // Trainings direkt nach dem Laden sortieren
+        SortSavedTrainingsByDate();
+
         UpdateExerciseProgress();
+
+        UpdateSearchResults();
     }
 
+
+    // ------------------------------------------------
+    // ÜBUNG HINZUFÜGEN
+    // ------------------------------------------------
 
     private void AddExercise()
     {
         if (string.IsNullOrWhiteSpace(NewExercise))
         {
-            StatusMessage = "Bitte gib eine Übung ein.";
+            StatusMessage =
+                "Bitte gib eine Übung ein.";
+
             return;
         }
+
 
         if (!double.TryParse(NewWeight, out double weight))
         {
-            StatusMessage = "Bitte gib ein gültiges Gewicht ein.";
+            StatusMessage =
+                "Bitte gib ein gültiges Gewicht ein.";
+
             return;
         }
+
 
         if (!int.TryParse(NewSets, out int sets))
         {
-            StatusMessage = "Bitte gib eine gültige Anzahl Sätze ein.";
+            StatusMessage =
+                "Bitte gib eine gültige Anzahl Sätze ein.";
+
             return;
         }
+
 
         if (!int.TryParse(NewRepetitions, out int repetitions))
         {
-            StatusMessage = "Bitte gib gültige Wiederholungen ein.";
+            StatusMessage =
+                "Bitte gib gültige Wiederholungen ein.";
+
             return;
         }
 
-        if (weight < 0 || sets <= 0 || repetitions <= 0)
+
+        if (weight < 0 ||
+            sets <= 0 ||
+            repetitions <= 0)
         {
-            StatusMessage = "Bitte gib sinnvolle Trainingswerte ein.";
+            StatusMessage =
+                "Bitte gib sinnvolle Trainingswerte ein.";
+
             return;
         }
 
@@ -182,9 +267,14 @@ public class MainWindowViewModel : ViewModelBase
         NewRepetitions = "";
 
 
-        StatusMessage = "Übung wurde hinzugefügt.";
+        StatusMessage =
+            "Übung wurde hinzugefügt.";
     }
 
+
+    // ------------------------------------------------
+    // ÜBUNG LÖSCHEN
+    // ------------------------------------------------
 
     private void DeleteExercise()
     {
@@ -213,6 +303,10 @@ public class MainWindowViewModel : ViewModelBase
     }
 
 
+    // ------------------------------------------------
+    // TRAINING SPEICHERN
+    // ------------------------------------------------
+
     private void CreateTraining()
     {
         if (string.IsNullOrWhiteSpace(TrainingName))
@@ -237,6 +331,8 @@ public class MainWindowViewModel : ViewModelBase
         {
             Name = TrainingName,
 
+            Date = TrainingDate ?? DateTimeOffset.Now,
+
             Exercises = Exercises
                 .Select(exercise => new Exercise
                 {
@@ -249,6 +345,7 @@ public class MainWindowViewModel : ViewModelBase
         };
 
 
+        // Bestehendes Training bearbeiten
         if (editingTrainingIndex >= 0)
         {
             SavedTrainings[editingTrainingIndex] =
@@ -259,6 +356,8 @@ public class MainWindowViewModel : ViewModelBase
 
             editingTrainingIndex = -1;
         }
+
+        // Neues Training
         else
         {
             SavedTrainings.Add(training);
@@ -268,12 +367,20 @@ public class MainWindowViewModel : ViewModelBase
         }
 
 
+        // Nach Datum sortieren
+        SortSavedTrainingsByDate();
+
         SaveTrainings();
 
         UpdateExerciseProgress();
 
+        UpdateSearchResults();
+
 
         TrainingName = "";
+
+        TrainingDate =
+            DateTimeOffset.Now;
 
         Exercises.Clear();
 
@@ -282,6 +389,10 @@ public class MainWindowViewModel : ViewModelBase
         SelectedTraining = training;
     }
 
+
+    // ------------------------------------------------
+    // TRAINING BEARBEITEN
+    // ------------------------------------------------
 
     private void EditTraining()
     {
@@ -303,10 +414,15 @@ public class MainWindowViewModel : ViewModelBase
             SelectedTraining.Name;
 
 
+        TrainingDate =
+            SelectedTraining.Date;
+
+
         Exercises.Clear();
 
 
-        foreach (Exercise exercise in SelectedTraining.Exercises)
+        foreach (Exercise exercise
+                 in SelectedTraining.Exercises)
         {
             Exercises.Add(
                 new Exercise
@@ -326,6 +442,10 @@ public class MainWindowViewModel : ViewModelBase
             "Training wurde zum Bearbeiten geladen.";
     }
 
+
+    // ------------------------------------------------
+    // TRAINING LÖSCHEN
+    // ------------------------------------------------
 
     private void DeleteTraining()
     {
@@ -360,6 +480,9 @@ public class MainWindowViewModel : ViewModelBase
 
             TrainingName = "";
 
+            TrainingDate =
+                DateTimeOffset.Now;
+
             Exercises.Clear();
 
             SelectedExercise = null;
@@ -370,11 +493,82 @@ public class MainWindowViewModel : ViewModelBase
 
         UpdateExerciseProgress();
 
+        UpdateSearchResults();
+
 
         StatusMessage =
             $"Training '{name}' wurde gelöscht.";
     }
 
+
+    // ------------------------------------------------
+    // NEU:
+    // TRAININGS NACH DATUM SORTIEREN
+    // ------------------------------------------------
+
+    private void SortSavedTrainingsByDate()
+    {
+        // Neueste Trainings zuerst
+        List<Training> sortedTrainings =
+            SavedTrainings
+                .OrderByDescending(
+                    training => training.Date)
+                .ToList();
+
+
+        SavedTrainings.Clear();
+
+
+        foreach (Training training
+                 in sortedTrainings)
+        {
+            SavedTrainings.Add(training);
+        }
+    }
+
+
+    // ------------------------------------------------
+    // NEU:
+    // NACH EINER ÜBUNG SUCHEN
+    // ------------------------------------------------
+
+    private void UpdateSearchResults()
+    {
+        SearchResults.Clear();
+
+
+        // Wenn nichts eingegeben wurde,
+        // soll auch nichts gesucht werden
+        if (string.IsNullOrWhiteSpace(SearchExercise))
+        {
+            return;
+        }
+
+
+        foreach (Training training
+                 in SavedTrainings)
+        {
+            // Prüfen, ob irgendeine Übung
+            // den Suchbegriff enthält
+            bool containsExercise =
+                training.Exercises.Any(
+                    exercise =>
+                        exercise.Name.Contains(
+                            SearchExercise,
+                            StringComparison.OrdinalIgnoreCase));
+
+
+            if (containsExercise)
+            {
+                SearchResults.Add(training);
+            }
+        }
+    }
+
+
+    // ------------------------------------------------
+    // JSON SPEICHERN
+    // ------------------------------------------------
 
     private void SaveTrainings()
     {
@@ -406,6 +600,10 @@ public class MainWindowViewModel : ViewModelBase
     }
 
 
+    // ------------------------------------------------
+    // JSON LADEN
+    // ------------------------------------------------
+
     private void LoadTrainings()
     {
         if (!File.Exists(filePath))
@@ -434,7 +632,8 @@ public class MainWindowViewModel : ViewModelBase
             SavedTrainings.Clear();
 
 
-            foreach (Training training in trainings)
+            foreach (Training training
+                     in trainings)
             {
                 SavedTrainings.Add(training);
             }
@@ -447,6 +646,10 @@ public class MainWindowViewModel : ViewModelBase
         }
     }
 
+
+    // ------------------------------------------------
+    // TRAININGSFORTSCHRITT
+    // ------------------------------------------------
 
     private void UpdateExerciseProgress()
     {
@@ -485,7 +688,8 @@ public class MainWindowViewModel : ViewModelBase
 
                     MaxWeight =
                         exercises.Max(
-                            exercise => exercise.Weight)
+                            exercise =>
+                                exercise.Weight)
                 };
 
 
